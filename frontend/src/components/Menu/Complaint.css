@@ -1,49 +1,210 @@
+/* container */
 .complaint-container {
-    padding: 2rem;
-    max-width: 600px;
-    margin: auto;
-    background: #ffffff;
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 720px;
+  margin: 2.5rem auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+/* title */
+.complaint-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* labels */
+.complaint-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+/* inputs & selects & textarea */
+.complaint-input,
+.complaint-select,
+.complaint-textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e6e9ef;
+  border-radius: 10px;
+  font-size: 0.96rem;
+  background: #fff;
+  color: #0f172a;
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease, transform .08s ease;
+}
+
+.complaint-input:focus,
+.complaint-select:focus,
+.complaint-textarea:focus {
+  border-color: rgba(99, 102, 241, 0.55);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.06);
+  transform: translateY(-1px);
+}
+
+.complaint-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* helper / hint text */
+.complaint-hint {
+  font-size: 0.88rem;
+  color: #6b7280;
+  margin-top: -0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* buttons */
+.btn-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.25rem;
+  align-items: center;
+}
+
+button.submit-btn {
+  background: linear-gradient(90deg, #6b46ff, #4f46e5);
+  color: white;
+  padding: 0.7rem 1.1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.96rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.12);
+  transition: transform .12s ease, opacity .12s ease;
+}
+
+button.submit-btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+button.reset-btn {
+  background: transparent;
+  color: #374151;
+  padding: 0.6rem 1rem;
+  border: 1px solid #e6e9ef;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* messages */
+.message {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-top: 0.6rem;
+}
+
+.message.success {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.message.error {
+  background: #fff5f5;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* admin table */
+.complaints-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.complaints-table thead th {
+  text-align: left;
+  padding: 0.85rem 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.complaints-table tbody td {
+  padding: 0.9rem 0.75rem;
+  border-bottom: 1px solid #f3f6fb;
+  vertical-align: top;
+}
+
+.complaint-desc {
+  color: #334155;
+  max-width: 44ch;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* urgency pill */
+.urgency-pill {
+  display: inline-block;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #fff;
+}
+
+.urgency-low {
+  background: #64748b;
+}
+
+.urgency-moderate {
+  background: #f59e0b;
+}
+
+.urgency-high {
+  background: #ef4444;
+}
+
+/* responsive */
+@media (max-width:720px) {
+  .complaint-container {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
   }
-  
-  .complaint-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1.5rem;
+
+  .complaints-table thead {
+    display: none;
   }
-  
-  .complaint-label {
-    font-weight: 600;
+
+  .complaints-table tbody td {
     display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  select,
-  textarea {
     width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    resize: vertical;
+    padding: 10px;
   }
-  
-  button.submit-btn {
-    background-color: #ef4444;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+  .complaints-table tbody tr {
+    margin-bottom: 0.6rem;
+    display: block;
+    background: #fbfbfd;
+    border-radius: 8px;
+    padding: 0.5rem;
   }
-  
-  button.submit-btn:hover {
-    background-color: #dc2626;
+
+  .btn-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
   }
-  
+}
