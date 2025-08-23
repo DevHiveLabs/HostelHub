@@ -1,0 +1,29 @@
+.header-element{
+    /* background-image: linear-gradient(rgb(0, 0, 0, 1),#06A7F4); */
+    background-color: black;
+    /* background-image: radial-gradient(rgb(0, 100, 255),rgb(0, 100, 255, 0.5)); */
+}
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    padding: 0.5rem 0;
+    min-width: 10rem;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}

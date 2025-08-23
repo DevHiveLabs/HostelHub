@@ -1,0 +1,75 @@
+/* General Layout */
+.attendance-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  .attendance-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #0088FE;
+  }
+  
+  .attendance-percentage {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #444;
+  }
+  
+  /* Chart Section */
+  .charts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+  }
+  
+  /* Chart Cards */
+  .chart-card {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  /* Calendar Section */
+  .calendar-section {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  /* Calendar Styling for Absent Days */
+  .react-calendar {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    background: #fff;
+    border: none;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+  }
+  
+  .react-calendar__tile--now {
+    background: #e6f7ff !important;
+    border-radius: 50%;
+  }
+  
+  .absent-day {
+    background: #ff4d4f !important;
+    color: white !important;
+    border-radius: 50%;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .charts-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  }

@@ -1,0 +1,52 @@
+.home-background {
+    background-image: url('https://images.pexels.com/photos/31424880/pexels-photo-31424880/free-photo-of-real-estate-concept-with-key-and-house-models.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 600px;
+}
+
+.home-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.home-content button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #198754;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-content button:hover {
+    background-color: #157347;
+}
