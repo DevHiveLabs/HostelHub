@@ -96,6 +96,16 @@ export default function FoodMenu() {
     const [submitting, setSubmitting] = useState(false);
     const [message, setMessage] = useState(null);
     const timersRef = useRef({});
+    // inside FoodMenu component
+    const [hoverRating, setHoverRating] = useState({ taste: 0, quality: 0, hygiene: 0, services: 0 });
+
+    const handleMouseEnter = (field, rating) => {
+        setHoverRating((prev) => ({ ...prev, [field]: rating }));
+    };
+
+    const handleMouseLeave = (field) => {
+        setHoverRating((prev) => ({ ...prev, [field]: 0 }));
+    };
 
     const getWeekday = () => new Date().toLocaleString('default', { weekday: 'long' });
 
@@ -242,19 +252,26 @@ export default function FoodMenu() {
                                 <div key={field} className="form-row">
                                     <label className="form-label">{field}</label>
                                     <div className="stars">
-                                        {[1, 2, 3, 4, 5].map((num) => (
-                                            <span
-                                                key={num}
-                                                className={num <= formData[field] ? "active" : ""}
-                                                onClick={() => handleRating(field, num)}
-                                            >
-                                                ★
-                                            </span>
-                                        ))}
+                                        {[1, 2, 3, 4, 5].map((num) => {
+                                            const isActive = hoverRating[field]
+                                                ? num <= hoverRating[field] // show hover highlight
+                                                : num <= formData[field];   // fallback to saved rating
+                                            return (
+                                                <span
+                                                    key={num}
+                                                    className={isActive ? "active" : ""}
+                                                    onClick={() => handleRating(field, num)}
+                                                    onMouseEnter={() => handleMouseEnter(field, num)}
+                                                    onMouseLeave={() => handleMouseLeave(field)}
+                                                >
+                                                    ★
+                                                </span>
+                                            );
+                                        })}
                                     </div>
-
                                 </div>
                             ))}
+
 
                             <div className="form-row">
                                 <textarea name="suggestions" value={formData.suggestions} onChange={handleChange} placeholder="Any suggestions..." rows={4} />
