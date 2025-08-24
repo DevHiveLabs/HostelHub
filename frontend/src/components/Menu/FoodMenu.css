@@ -1,0 +1,137 @@
+:root {
+    --bg: #fbfbfd;
+    --text: #0f172a;
+    --accent1: #6b46ff;
+    --card: #fff;
+    --muted: #6b7280;
+}
+
+.foodmenu {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Layout grid */
+.foodmenu .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 2 columns */
+    gap: 1.5rem;
+}
+
+/* Stack vertically on small screens */
+@media (max-width: 768px) {
+    .foodmenu .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Card styles */
+.card {
+    background: var(--card);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.menu-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.feedback-form textarea {
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--muted);
+    border-radius: 0.5rem;
+    resize: vertical;
+}
+
+.feedback-form button {
+    background: var(--accent1);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.feedback-form button:hover {
+    opacity: 0.9;
+}
+
+.feedback-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.feedback-table th,
+.feedback-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+.foodmenu-wrapper {
+    padding: 1.5rem;
+}
+
+.foodmenu-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* menu larger, feedback/admin smaller */
+    gap: 1.5rem;
+}
+
+.menu-card,
+.panel-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+/* Feedback stars */
+.stars {
+    display: flex;
+    gap: 0.4rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.stars span {
+    color: #ccc;
+    /* default grey */
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.stars span:hover,
+.stars span:hover~span {
+    color: #ccc;
+    /* keep future stars grey */
+}
+
+.stars span:hover,
+.stars span.active {
+    color: #ffb400;
+    /* gold when active */
+    transform: scale(1.1);
+    /* slight pop on hover */
+}
+
+/* Make it responsive (stacked on small screens) */
+@media (max-width: 900px) {
+    .foodmenu-grid {
+        grid-template-columns: 1fr;
+    }
+}
