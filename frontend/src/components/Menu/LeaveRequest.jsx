@@ -20,16 +20,16 @@ function LeaveRequest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    formData.email=JSON.parse(localStorage.getItem('user')).email
-    console.log(formData)
+    formData.email = JSON.parse(localStorage.getItem('user')).email;
     try {
-      const response = await fetch('https://shms-backend-zvyd.onrender.com/leave-api/leaveRequests', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        'https://shms-backend-zvyd.onrender.com/leave-api/leaveRequests',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
 
@@ -55,11 +55,11 @@ function LeaveRequest() {
 
   return (
     <div style={styles.container}>
-      <h2>Leave Request Form</h2>
+      <h2 style={styles.heading}>Leave Request</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
-
+        {/* Reason */}
         <div>
-          <label>Reason for Leave:</label>
+          <label style={styles.label}>Reason</label>
           <div style={styles.radioGroup}>
             {reasons.map((r) => (
               <label key={r} style={styles.radioLabel}>
@@ -69,42 +69,56 @@ function LeaveRequest() {
                   value={r}
                   checked={formData.reason === r}
                   onChange={handleChange}
+                  style={styles.radioInput}
                   required
                 />
-                {r}
+                <span>{r}</span>
               </label>
             ))}
           </div>
         </div>
 
-        <label>Check-Out Date</label>
-        <input
-          type="date"
-          name="checkOutDate"
-          value={formData.checkOutDate}
-          onChange={handleChange}
-          required
-        />
+        {/* Dates */}
+        <div style={styles.dateGroup}>
+          <div style={styles.dateField}>
+            <label style={styles.label}>Check-Out</label>
+            <input
+              type="date"
+              name="checkOutDate"
+              value={formData.checkOutDate}
+              onChange={handleChange}
+              style={styles.input}
+              required
+            />
+          </div>
+          <div style={styles.dateField}>
+            <label style={styles.label}>Check-In</label>
+            <input
+              type="date"
+              name="checkInDate"
+              value={formData.checkInDate}
+              onChange={handleChange}
+              style={styles.input}
+              required
+            />
+          </div>
+        </div>
 
-        <label>Check-In Date</label>
-        <input
-          type="date"
-          name="checkInDate"
-          value={formData.checkInDate}
-          onChange={handleChange}
-          required
-        />
-
+        {/* Message */}
         <textarea
           name="message"
           placeholder="Additional message..."
           value={formData.message}
           onChange={handleChange}
           rows={4}
+          style={styles.textarea}
         />
 
-        <button type="submit">Submit Leave Request</button>
-        {status && <p>{status}</p>}
+        {/* Submit */}
+        <button type="submit" style={styles.button}>
+          Submit Request
+        </button>
+        {status && <p style={styles.status}>{status}</p>}
       </form>
     </div>
   );
@@ -112,29 +126,93 @@ function LeaveRequest() {
 
 const styles = {
   container: {
-    maxWidth: '500px',
-    margin: '2rem auto',
-    padding: '1.5rem',
-    border: '1px solid #ddd',
-    borderRadius: '10px',
-    backgroundColor: '#f9f9f9',
-    boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
+    maxWidth: '480px',
+    margin: '3rem auto',
+    padding: '2rem',
+    borderRadius: '16px',
+    backgroundColor: '#ffffff',
+    boxShadow: '0 8px 20px rgba(0,0,0,0.06)',
+    fontFamily: 'system-ui, sans-serif',
+  },
+  heading: {
+    textAlign: 'center',
+    marginBottom: '1.5rem',
+    fontSize: '1.5rem',
+    fontWeight: '600',
+    color: '#333',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
     gap: '1.2rem',
   },
+  label: {
+    fontSize: '0.9rem',
+    fontWeight: '500',
+    color: '#555',
+    marginBottom: '0.3rem',
+    display: 'block',
+  },
   radioGroup: {
     display: 'flex',
-    flexDirection: 'column',
+    flexWrap: 'wrap',
+    gap: '0.8rem',
     marginTop: '0.5rem',
   },
   radioLabel: {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.5rem',
-    marginBottom: '0.3rem',
+    gap: '0.4rem',
+    padding: '0.4rem 0.8rem',
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+  },
+  radioInput: {
+    accentColor: '#4CAF50',
+  },
+  dateGroup: {
+    display: 'flex',
+    gap: '1rem',
+  },
+  dateField: {
+    flex: 1,
+  },
+  input: {
+    width: '100%',
+    padding: '0.6rem 0.8rem',
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    fontSize: '0.95rem',
+    outline: 'none',
+    transition: 'border 0.2s ease',
+  },
+  textarea: {
+    width: '100%',
+    padding: '0.8rem',
+    border: '1px solid #ddd',
+    borderRadius: '10px',
+    fontSize: '0.95rem',
+    outline: 'none',
+    resize: 'none',
+  },
+  button: {
+    backgroundColor: '#4CAF50',
+    color: '#fff',
+    padding: '0.8rem',
+    border: 'none',
+    borderRadius: '10px',
+    fontSize: '1rem',
+    fontWeight: '500',
+    cursor: 'pointer',
+    transition: 'background 0.2s ease',
+  },
+  status: {
+    textAlign: 'center',
+    marginTop: '0.8rem',
+    fontSize: '0.9rem',
+    color: '#444',
   },
 };
 
