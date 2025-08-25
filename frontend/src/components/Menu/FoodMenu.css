@@ -3,7 +3,7 @@
     --text: #0f172a;
     --accent1: #bebebe;
     --card: #fff;
-  
+    --muted: #6b7280;
 }
 .foodmenu {
     background: var(--bg);
