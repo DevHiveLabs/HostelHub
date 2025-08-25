@@ -1,6 +1,9 @@
 :root {
     --bg: #fbfbfd;
     --text: #0f172a;
+    --accent1: #bebebe;
+    --card: #fff;
+  
 }
 .foodmenu {
     background: var(--bg);
