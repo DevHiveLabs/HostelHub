@@ -1,23 +1,3 @@
-import React, { useEffect, useState } from 'react';
-
-function AdminApproval(){
-  const [leaveRequests, setLeaveRequests] = useState([]);
-  const [status, setStatus] = useState('');
-
-  useEffect(() => {
-    fetchLeaveRequests();
-  }, []);
-
-  const fetchLeaveRequests = async () => {
-    try {
-      const response = await fetch('https://shms-backend-zvyd.onrender.com/leave-api/leaveRequests');
-      const data = await response.json();
-      setLeaveRequests(data.leaveRequests || []);
-    } catch (err) {
-      console.error(err);
-      setStatus('Failed to load leave requests');
-    }
-  };
 
   const updateApproval = async (email, checkOutDate, decision) => {
     try {
