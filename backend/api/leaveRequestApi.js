@@ -1,4 +1,28 @@
+const express = require('express');
+const leaveApp = express.Router();
 
+// Middleware
+leaveApp.use(express.json());
+
+// POST /leaveRequests — Add leave to any document with a `leaveRequests` array
+leaveApp.post('/leaveRequests', async (req, res) => {
+  const leaveRequest = req.body;
+
+  // Check if the body has all required fields (optional but nice)
+  const requiredFields = ['email', 'reason', 'checkOutDate', 'checkInDate', 'approval', 'message'];
+  const missing = requiredFields.filter(field => !leaveRequest[field]);
+
+  if (missing.length > 0) {
+    return res.status(400).json({ message: `Missing fields: ${missing.join(', ')}` });
+  }
+
+  const mainCollection = req.app.get('mainCollection');
+
+  try {
+    const result = await mainCollection.updateOne(
+      { leaveRequests: { $exists: true } }, // Match any document with leaveRequests
+      { $push: { leaveRequests: leaveRequest } }
+    );
 
     if (result.modifiedCount === 1) {
       res.status(200).send({ message: '✅ Leave request added successfully.' });
