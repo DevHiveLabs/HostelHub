@@ -1,3 +1,14 @@
+const exp = require('express');
+const roomsApi = exp.Router();
+
+let roomCollection;
+let usersCollection;
+
+roomsApi.use((req, res, next) => {
+    roomCollection = req.app.get('roomCollection');
+    usersCollection = req.app.get('usersCollection');
+    next();
+});
 
 // ------------------- GET ROOMS -------------------
 
@@ -116,4 +127,5 @@ roomsApi.post('/bookRooms', async (req, res) => {
 });
 
 module.exports = roomsApi;
+
 
