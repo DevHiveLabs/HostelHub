@@ -1,4 +1,26 @@
-
+/* General Layout */
+.attendance-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  .attendance-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #0088FE;
+  }
+  
+  .attendance-percentage {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #444;
+  }
+  
+  /* Chart Section */
+  .charts-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
