@@ -1,12 +1,4 @@
-const express = require('express');
-const leaveApp = express.Router();
 
-// Middleware
-leaveApp.use(express.json());
-
-// POST /leaveRequests — Add leave to any document with a `leaveRequests` array
-leaveApp.post('/leaveRequests', async (req, res) => {
-  const leaveRequest = req.body;
 
   // Check if the body has all required fields (optional but nice)
   const requiredFields = ['email', 'reason', 'checkOutDate', 'checkInDate', 'approval', 'message'];
