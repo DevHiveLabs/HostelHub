@@ -1,4 +1,32 @@
-=> {
+import React, { useEffect, useRef, useState } from 'react';
+import * as faceapi from '@vladmandic/face-api';
+import './CheckInOut.css';
+const MAX_IMAGES = 10;
+
+function CheckInOut() {
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [mode, setMode] = useState('register');
+  const [name, setName] = useState('');
+  const [captures, setCaptures] = useState([]);
+  const [descriptors, setDescriptors] = useState([]);
+  const [status, setStatus] = useState('');
+  const [userAction, setUserAction] = useState('');
+
+  useEffect(() => {
+    const loadModels = async () => {
+      const MODEL_URL = '/models';
+      await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+        faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+        faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+      ]);
+      startWebcam();
+    };
+    loadModels();
+  }, []);
+
+  const startWebcam = () => {
     navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
       videoRef.current.srcObject = stream;
     });
