@@ -1,3 +1,29 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import './Attendance.css';
+
+import {
+  PieChart, Pie, Cell, Tooltip,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend
+} from 'recharts';
+
+const COLORS = ['#00C49F', '#FF8042', '#0088FE', '#FFBB28'];
+
+const Attendance = () => {
+  const [attendance, setAttendance] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [absentDates, setAbsentDates] = useState([]);
+
+  useEffect(() => {
+    const fetchAttendance = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const res = await axios.get(`http://localhost:4000/attendance-api/report/${user.email}`);
+        const data = res.data;
+        setAttendance(data);
+        setLoading(false);
 
         const yearStart = new Date(new Date().getFullYear(), 0, 1);
         const absents = [];
