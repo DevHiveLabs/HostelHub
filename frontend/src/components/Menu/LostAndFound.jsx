@@ -1,15 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
-function LostAndFound() {
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = JSON.parse(localStorage.getItem("token"));
-
-    useEffect(() => {
-        fetchItems();
-    }, []);
 
     const fetchItems = async () => {
         try {
@@ -117,5 +106,6 @@ const styles = {
         cursor: 'pointer'
     }
 };
+
 
 export default LostAndFound;
