@@ -75,4 +75,28 @@ function Signin() {
                         <span className="text-danger">Email is required</span>
                     )}
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        className="form-control shadow-sm"
+                        placeholder="Password"
+                        {...register("password", { required: true })}
+                    />
+                    {errors.password?.type === "required" && (
+                        <span className="text-danger">Password is required</span>
+                    )}
+                </div>
+
+                <button className="btn btn-success col-sm-6 col-md-4 col-lg-3 d-block mx-auto mb-3">Signin</button>
+            </form>
+        </div>
+    );
+}
+
+export default Signin;
+
+
+
 
