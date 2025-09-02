@@ -15,34 +15,7 @@ function Signin() {
     let navigate = useNavigate();
 
     async function handleFormSubmit(user) {
-        // console.log(user);
-        // user = {
-        //     id: "",
-        //     email: "john@example.com",
-        //     password: "hashed_password",
-        //     name: "John Doe",
-        //     gender: "Male",
-        //     mobileNumber: "1171728822",
-        //     room: {
-        //         roomNo: "104",
-        //         roomType: "AC",
-        //         sharingNo: 5
-        //     },
-        //     checkInOut: [
-        //         {}
-        //     ],
-        //     isPresent: true,
-        //     joinDate: "2025-06-01",
-        //     leaveRequests: [
-        //         {
-        //             reason: "",
-        //             checkOutTime: "",
-        //             checkInTime: ""
-        //         }
-        //     ],
-        //     paymentBalance: 0,
-        //     paymentStatus: true
-        // }
+      
         if (user.role == "user") {
             const res = await axios.post('https://shms-backend-zvyd.onrender.com/user-api/login', user);
             if (res.data.message === "Login successful") {
@@ -124,3 +97,4 @@ function Signin() {
 }
 
 export default Signin;
+
