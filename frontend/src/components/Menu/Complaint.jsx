@@ -21,7 +21,7 @@ export default function Complaint() {
                 setErr("");
                 try {
                     const res = await axios.get("https://shms-backend-zvyd.onrender.com/admin-api/complaints");
-                    // make tolerant to different response shapes
+                    // making tolerant to different response shapes
                     setComplaints(res?.data?.complaints || res?.data || []);
                 } catch (e) {
                     console.error(e);
