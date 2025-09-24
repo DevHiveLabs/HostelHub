@@ -1,27 +1,3 @@
-import React, { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Home.css";
-
-export default function Home1() {
-    const n = useNavigate();
-    const r = useRef(null);
-
-    useEffect(() => {
-        const els = document.querySelectorAll("[data-reveal]");
-        const io = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((en) => {
-                    if (en.isIntersecting) {
-                        en.target.classList.add("in-view");
-                        io.unobserve(en.target);
-                    }
-                });
-            },
-            { threshold: 0.12 }
-        );
-        els.forEach((el) => io.observe(el));
-        return () => io.disconnect();
-    }, []);
 
     useEffect(() => {
         const onScroll = () => {
@@ -139,3 +115,4 @@ export default function Home1() {
         </main>
     );
 }
+
