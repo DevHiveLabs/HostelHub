@@ -1,3 +1,18 @@
+const exp = require('express');
+const adminApp = exp.Router();
+const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { ObjectId } = require('mongodb');
+
+let adminCollection;
+let mainCollection; // For complaints and feedback
+
+// Middleware to initialize collections
+adminApp.use((req, res, next) => {
+    adminCollection = req.app.get('adminCollection');
+    mainCollection = req.app.get('mainCollection');
+    next();
+});
 
 // Utility to remove a field from an object
 function remove(obj, st) {
@@ -98,4 +113,5 @@ adminApp.get('/feedback', async (req, res) => {
 });
 
 module.exports = adminApp;
+
 
