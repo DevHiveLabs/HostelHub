@@ -1,4 +1,28 @@
+:root{
+    --time: 1s;
+}
 
+@keyframes home-card {
+    0%{
+        width:40%;
+        height:40%;
+        top:30%;
+        left:30%;
+    }
+
+    50% {
+        width:40%;
+        height:40%;
+        top:30%;
+        left:30%;
+    }
+
+    50.00001%{
+        width:20%;
+        height:20%;
+        top:40%;
+        left:40%
+    }
 
     100% {
         width:100%;
@@ -27,7 +51,6 @@
     top:0;
     left:0;
 }
-
 @keyframes home-card1 {
     0% {
         width: 10%;
@@ -804,3 +827,4 @@
     height:0;
 
 }
+
