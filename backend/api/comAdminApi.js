@@ -12,7 +12,7 @@ comAdminApp.use((req, res, next) => {
     adminCollection = req.app.get('adminCollection')
     next()
 })
-
+//use api for ease
 comAdminApp.use(exp.json())
 
 comAdminApp.post('/community', async (req, res) => {
@@ -497,5 +497,6 @@ comAdminApp.put('/sports',async(req,res)=>{
         })
     }
 })
+
 
 module.exports = comAdminApp
